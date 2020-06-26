@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "3fec2a8f-94f2-4875-ba85-2fce4dce40cb",
+		"name": "spring boot microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create order",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "co",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8769/order/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8769",
+					"path": [
+						"order",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post order service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer_name\":\"test\",\"date\":\"2020-12-12\",\"shipping_address\":\"address\",\"order_items_id\":12,\"total_cost\":10000.0,\r\n\"orderItem\":{\r\n    \"product_code\": \"test\",\r\n    \"product_name\": \"product 1\",\r\n    \"quantity\": \"12\"\r\n}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8769/order/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8769",
+					"path": [
+						"order",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post order item service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"product_code\":\"test\",\"order_number\":\"1\",\"product_name\":\"product 1\",\"quantity\":12}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8768/orderitem/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8768",
+					"path": [
+						"orderitem",
+						"save"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
